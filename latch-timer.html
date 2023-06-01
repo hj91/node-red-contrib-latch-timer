@@ -1,0 +1,62 @@
+<!--
+
+Copyright 2023 Bufferstack.IO Analytics Technology LLP, Pune.
+
+Licensed under the GNU General Public License, Version 3.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.gnu.org/licenses/gpl-3.0.html
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('latch-timer',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            duration: {value:"", required:true},
+            timeUnit: {value:"milliseconds", required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "timer.png",
+        label: function() {
+            return this.name||"latch timer";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="latch-timer">
+    <div class="form-row">
+        <label for="node-input-duration"><i class="icon icon-time"></i> Duration</label>
+        <input type="text" id="node-input-duration" placeholder="Enter time">
+    </div>
+    <div class="form-row">
+        <label for="node-input-timeUnit"><i class="icon icon-time"></i> Time Unit</label>
+        <select id="node-input-timeUnit">
+            <option value="milliseconds">Milliseconds</option>
+            <option value="seconds">Seconds</option>
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="latch-timer">
+    <p>A latch timer switch node for Node-RED.</p>
+    <p>It receives boolean input as true and sets the output as false after user selected time is elapsed </p>
+    <p>Sending 'reset' in input payload resets the node to default </p> 
+</script>
